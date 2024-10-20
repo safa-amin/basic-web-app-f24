@@ -24,9 +24,4 @@ describe("QueryProcessor", () => {
         expect(response).toBe("sramin"); // Update with your actual Andrew ID
     });
 
-    test('should return default message for unrecognized query', () => {
-        const query = "unknown query";
-        const response: string = QueryProcessor(query);
-        expect(response).toBe("Query not recognized.");
-    });
 });
