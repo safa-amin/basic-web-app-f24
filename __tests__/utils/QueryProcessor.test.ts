@@ -15,15 +15,18 @@ describe("QueryProcessor", () => {
             "William Shakespeare (26 April 1564 - 23 April 1616) was an " +
             "English poet, playwright, and actor, widely regarded as the greatest " +
             "writer in the English language and the world's pre-eminent dramatist."
-          ));
+        ));
     });
 
-    // TODO: You should update the test below after you add your andrew id
     test('should return my andrew id', () => {
         const query = "what's your Andrew ID?";
         const response: string = QueryProcessor(query);
-        expect(response).toBe((
-            "YOUR ANDREW ID SHOULD BE HERE"
-          ));
+        expect(response).toBe("sramin"); // Update with your actual Andrew ID
+    });
+
+    test('should return default message for unrecognized query', () => {
+        const query = "unknown query";
+        const response: string = QueryProcessor(query);
+        expect(response).toBe("Query not recognized.");
     });
 });
