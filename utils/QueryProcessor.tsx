@@ -8,12 +8,9 @@ export default function QueryProcessor(query: string): string {
   }
 
   if (query.toLowerCase().includes("andrew id")) {
-    const andrewId = "sramin"; // Replace with your actual Andrew ID
-    if (andrewId === "YOUR ANDREW ID SHOULD BE HERE") {
-      throw new Error("Please replace the placeholder with your actual Andrew ID.");
-    }
-    return andrewId;
+    //TODO add your Andrew ID below
+    //TODO update the corresponding test case in __tests__
+    return ( "sramin" );
   }
-  
-  return "Query not recognized.";
+  return "";
 }
