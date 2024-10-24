@@ -49,6 +49,12 @@ export default function QueryProcessor(query: string): string {
     return (num1 * num2).toString();
   }
   
+  const subtractionMatch = query.match(/what is (\d+) minus (\d+)\?/i);
+  if (subtractionMatch) {
+    const num1 = parseInt(subtractionMatch[1], 10);
+    const num2 = parseInt(subtractionMatch[2], 10);
+    return (num1 - num2).toString();
+  }
   return "";
 
 
