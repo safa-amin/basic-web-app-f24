@@ -24,13 +24,24 @@ export default function QueryProcessor(query: string): string {
     return (num1 + num2).toString();
   }
 
-  const largestMatch = query.match(/which of the following numbers is the largest: ([\d,\s]+)\?/i);
+   const largestMatch = query.match(/which of the following numbers is the largest: ([\d,\s]+)\?/i);
   if (largestMatch) {
     const numbers = largestMatch[1].split(',').map(num => parseInt(num.trim(), 10));
     const largestNumber = Math.max(...numbers);
     return largestNumber.toString();
   }
 
+  const squareCubeMatch = query.match(/which of the following numbers is both a square and a cube: ([\d,\s]+)\?/i);
+  if (squareCubeMatch) {
+    const numbers = squareCubeMatch[1].split(',').map(num => parseInt(num.trim(), 10));
+    const squareCubeNumbers = numbers.filter(num => {
+      const sqrt = Math.sqrt(num);
+      const cbrt = Math.cbrt(num);
+      return Number.isInteger(sqrt) && Number.isInteger(cbrt);
+    });
+    return squareCubeNumbers.join(', ');
+  }
+  
   return "";
 
 
