@@ -41,6 +41,19 @@ export default function QueryProcessor(query: string): string {
     });
     return squareCubeNumbers.join(', ');
   }
+  
+  const primeMatch = query.match(/which of the following numbers are primes: ([\d,\s]+)\?/i);
+  if (primeMatch) {
+    const numbers = primeMatch[1].split(',').map(num => parseInt(num.trim(), 10));
+    const primeNumbers = numbers.filter(num => {
+      if (num <= 1) return false;
+      for (let i = 2; i <= Math.sqrt(num); i++) {
+        if (num % i === 0) return false;
+      }
+      return true;
+    });
+    return primeNumbers.join(', ');
+  }
 
   const multiplicationMatch = query.match(/what is (\d+) multiplied by (\d+)\?/i);
   if (multiplicationMatch) {
