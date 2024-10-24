@@ -30,4 +30,28 @@ describe("QueryProcessor", () => {
         expect(response).toBe("sramin");
     });
 
+    test('should return the result of 65 plus 51', () => {
+        const query = "What is 65 plus 51?";
+        const response: string = QueryProcessor(query);
+        expect(response).toBe("116");
+    });
+
+    test('should return the result of dynamic addition', () => {
+        const query = "What is 123 plus 456?";
+        const response: string = QueryProcessor(query);
+        expect(response).toBe("579");
+    });
+
+    test('should return the largest number', () => {
+        const query = "Which of the following numbers is the largest: 71, 72, 54?";
+        const response: string = QueryProcessor(query);
+        expect(response).toBe("72");
+    });
+
+    test('should return the largest number for 62, 14, 27', () => {
+        const query = "Which of the following numbers is the largest: 62, 14, 27?";
+        const response: string = QueryProcessor(query);
+        expect(response).toBe("62");
+    });
+
 });
