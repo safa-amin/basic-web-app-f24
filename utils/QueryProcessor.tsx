@@ -62,12 +62,14 @@ export default function QueryProcessor(query: string): string {
     return (num1 * num2).toString();
   }
   
-  const additionmMatch = query.match(/what is (\d+) plus (\d+) plus (\d+)\?/i);
-  if (additionMatch) {
-    const num1 = parseInt(additionMatch[1], 10);
-    const num2 = parseInt(additionMatch[2], 10);
-    const num3 = parseInt(additionMatch[3], 10);
-    return (num1 + num2 + num3).toString();
+  const additionGeneralMatch = query.match(/what is ((?:\d+\s*plus\s*)+\d+)\?/i);
+  if (additionGeneralMatch) {
+    const numbers = additionGeneralMatch[1]
+      .split("plus")
+      .map(num => parseInt(num.trim(), 10));
+
+    const sum = numbers.reduce((acc, curr) => acc + curr, 0);
+    return sum.toString();
   }
 
   const subtractionMatch = query.match(/what is (\d+) minus (\d+)\?/i);
@@ -76,7 +78,7 @@ export default function QueryProcessor(query: string): string {
     const num2 = parseInt(subtractionMatch[2], 10);
     return (num1 - num2).toString();
   }
-  
+
   const powerMatch = query.match(/what is (\d+) to the power of (\d+)\?/i);
   if (powerMatch) {
     const base = parseInt(powerMatch[1], 10);
