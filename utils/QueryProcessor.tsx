@@ -86,9 +86,15 @@ export default function QueryProcessor(query: string): string {
     return Math.pow(base, exponent).toString();
   }
 
+  const mixedOperationMatch = query.match(/what is (\d+) plus (\d+) multiplied by (\d+)\?/i);
+  if (mixedOperationMatch) {
+    const num1 = parseInt(mixedOperationMatch[1], 10);
+    const num2 = parseInt(mixedOperationMatch[2], 10);
+    const num3 = parseInt(mixedOperationMatch[3], 10);
+    return (num1 + (num2 * num3)).toString();
+  }
 
- 
-  
+
   return "";
 
 

@@ -66,4 +66,11 @@ describe("QueryProcessor", () => {
         expect(response).toBe("4096, 729");
     });
 
+    test('should return the result of power operation', () => {
+        const query = "What is 9 to the power of 12?";
+        const response: string = QueryProcessor(query);
+        expect(response).toBe("282429536481");
+    });
+
+
 });
