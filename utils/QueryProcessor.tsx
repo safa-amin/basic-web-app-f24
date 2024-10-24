@@ -41,7 +41,7 @@ export default function QueryProcessor(query: string): string {
     });
     return squareCubeNumbers.join(', ');
   }
-  
+
   const primeMatch = query.match(/which of the following numbers are primes: ([\d,\s]+)\?/i);
   if (primeMatch) {
     const numbers = primeMatch[1].split(',').map(num => parseInt(num.trim(), 10));
@@ -62,12 +62,25 @@ export default function QueryProcessor(query: string): string {
     return (num1 * num2).toString();
   }
   
+  const additionmMatch = query.match(/what is (\d+) plus (\d+) plus (\d+)\?/i);
+  if (additionMatch) {
+    const num1 = parseInt(additionMatch[1], 10);
+    const num2 = parseInt(additionMatch[2], 10);
+    const num3 = parseInt(additionMatch[3], 10);
+    return (num1 + num2 + num3).toString();
+  }
+
   const subtractionMatch = query.match(/what is (\d+) minus (\d+)\?/i);
   if (subtractionMatch) {
     const num1 = parseInt(subtractionMatch[1], 10);
     const num2 = parseInt(subtractionMatch[2], 10);
     return (num1 - num2).toString();
   }
+  
+  
+
+ 
+  
   return "";
 
 
