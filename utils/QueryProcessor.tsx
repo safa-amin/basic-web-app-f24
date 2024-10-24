@@ -25,6 +25,13 @@ export default function QueryProcessor(query: string): string {
     return "116";
   }
 
+  const additionMatch = query.match(/what is (\d+) plus (\d+)\?/i);
+  if (additionMatch) {
+    const num1 = parseInt(additionMatch[1], 10);
+    const num2 = parseInt(additionMatch[2], 10);
+    return (num1 + num2).toString();
+  }
+
   return "";
 
 
