@@ -41,6 +41,13 @@ export default function QueryProcessor(query: string): string {
     });
     return squareCubeNumbers.join(', ');
   }
+
+  const multiplicationMatch = query.match(/what is (\d+) times (\d+)\?/i);
+  if (multiplicationMatch) {
+    const num1 = parseInt(multiplicationMatch[1], 10);
+    const num2 = parseInt(multiplicationMatch[2], 10);
+    return (num1 * num2).toString();
+  }
   
   return "";
 
